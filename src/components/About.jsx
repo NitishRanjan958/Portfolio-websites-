@@ -22,8 +22,8 @@ const About = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
         >
           Frontend Developer with knowledge of HTML, CSS, JavaScript, React.js, and responsive web design. Passionate about
-building modern and user-friendly web applications. Quick learner with strong problem-solving skills and the ability to work
-in team environments. Seeking an opportunity to enhance technical skills and contribute to innovative projects.
+          building modern and user-friendly web applications. Quick learner with strong problem-solving skills and the ability to work
+          in team environments. Seeking an opportunity to enhance technical skills and contribute to innovative projects.
         </motion.p>
 
         <motion.div

@@ -66,7 +66,7 @@ const Skills = () => {
             transition={{ duration: 0.5, delay: index * 0.15 }}
             whileHover={{ scale: 1.05, rotateY: 5 }}
             whileTap={{ scale: 0.95 }}
-            className="skill-card"
+            className={`skill-card ${skill.category.toLowerCase()}-theme`}
           >
             <div className="skill-icon">{skill.icon}</div>
             <h3>{skill.category}</h3>
