@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/static/css/main.69d07e23.css",
+    "main.js": "/static/js/main.c4420d96.js",
+    "static/media/portfolio.png.png": "/static/media/portfolio.png.51f3f60aa05961d20d49.png",
+    "static/media/myntra.png.png": "/static/media/myntra.png.2de260b89475a82005f8.png",
+    "static/media/ecommerce.png.png": "/static/media/ecommerce.png.815f4fb6084ec4ee7051.png",
+    "static/media/Nitish.jpg": "/static/media/Nitish.b031a9881f08b45e8003.jpg",
+    "index.html": "/index.html",
+    "main.69d07e23.css.map": "/static/css/main.69d07e23.css.map",
+    "main.c4420d96.js.map": "/static/js/main.c4420d96.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.69d07e23.css",
+    "static/js/main.c4420d96.js"
+  ]
+}
