@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "#hero" },
@@ -13,6 +13,18 @@ const navLinks = [
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "dark";
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "dark" ? "light" : "dark"));
+  };
 
   return (
     <motion.nav
@@ -54,32 +66,44 @@ const Navbar = () => {
         ))}
       </ul>
 
-      {/* Right Side - CTA */}
-      <motion.a
-        href="https://drive.google.com/file/d/1nPCBtrliQ8vrXNd0MsX30cRJ7Prywgx0/view?usp=sharing"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="nav-cta"
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.5 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <span>Resume</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
-        </svg>
-      </motion.a>
+      {/* Right Side - Actions Group */}
+      <div className="nav-right-group">
+        <motion.button
+          className="theme-toggle-btn"
+          onClick={toggleTheme}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label="Toggle Theme"
+        >
+          {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+        </motion.button>
 
-      {/* Mobile Menu Button */}
-      <motion.button
-        className="menu-toggle"
-        onClick={() => setIsOpen(!isOpen)}
-        whileTap={{ scale: 0.9 }}
-      >
-        {isOpen ? <X size={26} /> : <Menu size={26} />}
-      </motion.button>
+        <motion.a
+          href="https://drive.google.com/file/d/1nPCBtrliQ8vrXNd0MsX30cRJ7Prywgx0/view?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="nav-cta"
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.5 }}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <span>Resume</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+          </svg>
+        </motion.a>
+
+        {/* Mobile Menu Button */}
+        <motion.button
+          className="menu-toggle"
+          onClick={() => setIsOpen(!isOpen)}
+          whileTap={{ scale: 0.9 }}
+        >
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
+        </motion.button>
+      </div>
 
       {/* Mobile Navigation */}
       <motion.div
